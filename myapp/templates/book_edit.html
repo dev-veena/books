@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+
+{%block body_block%}
+<div class="container mt-5 mb-5">
+    
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <form action="" method="post" enctype="multipart/form-data" class="border shadow grad2 p-3">
+                <h1 class="mt-4 mb-4 text-decoration-underline text-center">Add New Books</h1>
+                {%csrf_token%}
+                {{form.as_p}}
+                <div class="d-grid mx-auto col-6">
+                    <button type="submit" class="btn btn-light">Add</button>
+                  </div>
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+{%endblock%}

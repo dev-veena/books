@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+</head>
+
+<body class="port grad">
+    <div class="container mt-5">
+        <div class="row">
+            {%if messages%}
+                {%for msg in messages%}
+                    {%if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS%}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>{{msg}}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {%endif%}
+                    {%if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR%}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>{{msg}}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {%endif%}
+                {%endfor%}
+            {%endif%}
+            <div class="col-3">
+                <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque sapiente illum obcaecati quasi distinctio modi saepe, itaque accusantium, eaque animi delectus quisquam blanditiis! Voluptatibus quae, id repudiandae esse facilis repellendus?</p> -->
+            </div>              
+
+            <div class="col-6">
+                <form action="" method="post" class="shadow p-5 grad2">
+                    <h1 class="text-center">Login Form</h1>
+                    {%csrf_token%}
+                    {{form.as_p}}
+                    <div class="d-grid col-6 mx-auto mt-4 mb-4">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                    <div class="mb-2">
+                        New User ? <a href="{%url 'register'%}">Register Now</a>
+                    </div>
+                </form>
+            <div class="col-3"></div>    
+            </div>
+            
+        </div>
+    </div>
+</body>
+
+</html>

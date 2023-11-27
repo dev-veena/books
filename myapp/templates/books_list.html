@@ -1,0 +1,57 @@
+{%extends 'base.html'%}
+
+{%block body_block%}
+<div class="container mt-5">
+    
+    <div class="row">
+        <div class="col-3 text-white">
+            Filter by Auther
+            <!-- <a href="{%url 'book-all'%}?auther name=Chetan Bhagath">chetan bhagath</a> -->
+           <ul>
+            {%for a in authers%}
+                <li><a href="{%url 'book-all'%}?auther name={{a}}" class="text-info">{{a}}</a></li>
+            {%endfor%} 
+           </ul>
+        </div>
+        <div class="col-6">
+            <div>
+                <form action="" method="post" class="">
+                    {%csrf_token%}
+                    <div class="d-flex mt-4 mb-2">
+                        <input type="text" name="box" class="form-control me-3">
+                        <button type="submit" class="btn btn-success">Search</button>
+                    </div>
+                </form>
+            </div>
+            <table class="table">
+                <h1 class="text-center mt-4 mb-4 text-white">List Of Books</h1>
+                <tr>
+                    <th>Book Name</th>
+                    <th>Book Price</th>
+                    <th>Actions</th>
+                </tr>
+                {%for bk in data%}
+                <tr>
+                    <td>{{bk.book_name}}</td>
+                    <td>{{bk.book_price}}</td>
+                    <td>
+                        <div>
+                            <a href="{%url 'book-detail' bk.id%}">View</a>
+                        </div>
+                        <div>
+                            <a href="{%url 'book-delete' bk.id%}">Remove</a>
+                        </div>
+                        <div>
+                            <a href="{%url 'book-edit' bk.id%}">Edit</a>
+                        </div>
+                    </td>
+                </tr>
+                {%endfor%}
+            </table>
+        </div>
+        <div class="col-3">
+
+        </div>
+    </div>
+</div>
+{%endblock%}

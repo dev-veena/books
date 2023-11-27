@@ -1,0 +1,17 @@
+.port{
+    height: 100vh;
+}
+.grad{
+    background-color: #401903;
+    background-image: linear-gradient(62deg, #893402 0%, #85630e 100%);
+}
+.grad2{
+    background-color: #d8895c;
+    background-image: linear-gradient(62deg, #f09763 0%, #f2c860 100%);
+
+}
+.bg-nav{
+    background-color: #d8895c;
+    
+    
+}
